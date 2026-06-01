@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Planner</title>
+    <link rel="stylesheet" href="/style.css?v=2">
+</head>
+<body>
+    <div class="auth-container" id="authContainer">
+        <div class="auth-card">
+            <div id="loginForm">
+                <h2>Войти</h2>
+                <input type="email" id="loginEmail" placeholder="E-mail">
+                <input type="password" id="loginPassword" placeholder="Пароль">
+                <button id="loginBtn" class="auth-btn">Войти</button>
+                <div class="auth-footer"><a href="#" id="showRegisterLink">Зарегистрироваться?</a></div>
+            </div>
+            <div id="registerForm" style="display:none">
+                <h2>Регистрация</h2>
+                <input type="text" id="regName" placeholder="Имя (необязательно)">
+                <input type="email" id="regEmail" placeholder="E-mail">
+                <input type="password" id="regPassword" placeholder="Пароль">
+                <button id="registerBtn">Зарегистрироваться</button>
+                <div class="auth-footer"><a href="#" id="showLoginLink">← Назад</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container" id="appContainer" style="display:none">
+        <div class="tasks-header">
+            <h1>Планировщик задач</h1>
+            <button id="logoutBtn" class="logout-btn">Выйти</button>
+        </div>
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Поиск по названию">
+            <select id="sortSelect">
+                <option value="created_at_desc">Сначала новые</option>
+                <option value="deadline_asc">Дедлайн (ближайшие)</option>
+                <option value="deadline_desc">Дедлайн (дальние)</option>
+                <option value="priority_desc">Приоритет (высокий → низкий)</option>
+                <option value="priority_asc">Приоритет (низкий → высокий)</option>
+                <option value="status_asc">Статус (активные сначала)</option>
+            </select>
+            <button id="applyFiltersBtn">Применить</button>
+        </div>
+        <div class="add-task">
+            <input type="text" id="title" placeholder="Название задачи">
+            <select id="priority">
+                <option value="low">Низкий</option>
+                <option value="medium" selected>Средний</option>
+                <option value="high">Высокий</option>
+            </select>
+            <input type="datetime-local" id="deadline">
+            <button id="addTaskBtn">➕ Добавить</button>
+        </div>
+        <ul id="tasksList"></ul>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

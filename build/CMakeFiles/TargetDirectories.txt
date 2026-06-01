@@ -1,0 +1,3 @@
+/Users/avatark94/Desktop/GitHub/Pizdec/build/CMakeFiles/task_planner_web.dir
+/Users/avatark94/Desktop/GitHub/Pizdec/build/CMakeFiles/edit_cache.dir
+/Users/avatark94/Desktop/GitHub/Pizdec/build/CMakeFiles/rebuild_cache.dir
