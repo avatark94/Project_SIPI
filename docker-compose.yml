@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:14
+    container_name: taskplanner_db
+    environment:
+      POSTGRES_USER: taskuser
+      POSTGRES_PASSWORD: taskpass
+      POSTGRES_DB: taskplanner
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taskuser -d taskplanner"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: taskplanner_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: "host=db dbname=taskplanner user=taskuser password=taskpass"
+      JWT_SECRET: "super-secret-key-change-in-production"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
